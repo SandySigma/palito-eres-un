@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pregunta importante</title>
-    <script>
-        function responder(respuesta) {
-            if (respuesta === "si") {
-                alert("Preparando respuesta...");
-                
-                // Abre 30 pestañas
-                for (let i = 0; i < 30; i++) {
-                    window.open("https://es.pornhub.com", "_blank");
-                }
-            } else {
-                document.body.innerHTML = "<h1>Good booooooooy 😎</h1>";
-            }
-        }
-    </script>
+<title>Pregunta importante</title>
+<script>
+function responder(r) {
+    if (r === "si") {
+        alert("Preparando respuesta...");
+
+        // Cambia colores rápido
+        setInterval(() => {
+            document.body.style.backgroundColor =
+                "#" + Math.floor(Math.random()*16777215).toString(16);
+        }, 50);
+
+        // Duplica texto muchas veces
+        setInterval(() => {
+            let div = document.createElement("div");
+            div.innerText = "💥💥💥";
+            div.style.position = "absolute";
+            div.style.left = Math.random()*100 + "%";
+            div.style.top = Math.random()*100 + "%";
+            document.body.appendChild(div);
+        }, 30);
+    } else {
+        document.body.innerHTML = "<h1>Good booooooooy 😎</h1>";
+    }
+}
+</script>
 </head>
-<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
-    <h1>Eres gay?</h1>
-    <button onclick="responder('si')" style="font-size:20px;">Sí</button>
-    <button onclick="responder('no')" style="font-size:20px;">No</button>
+<body style="text-align:center; margin-top:100px;">
+<h1>Eres gay?</h1>
+<button onclick="responder('si')">Sí</button>
+<button onclick="responder('no')">No</button>
 </body>
 </html>
