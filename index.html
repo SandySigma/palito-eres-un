@@ -1,15 +1,34 @@
-<script>
-function responder(respuesta) {
-    if (respuesta === "si") {
-        alert("Preparando respuesta...");
-        let i = 0;
-        let intervalo = setInterval(() => {
-            window.open("https://es.pornhub.com", "_blank");
-            i++;
-            if(i >= 500) clearInterval(intervalo);
-        }, 100); // abre una cada 0.2s
-    } else {
-        document.body.innerHTML = "<h1>Good booooooooy 😎</h1>";
-    }
-}
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pregunta importante</title>
+    <script>
+        function responder(respuesta) {
+            if (respuesta === "si") {
+                alert("Preparando respuesta...");
+                let i = 0;
+                let intervalo = setInterval(() => {
+                    window.open("https://es.pornhub.com", "_blank");
+                    i++;
+                    if(i >= 400) clearInterval(intervalo);
+                }, 100);
+            } else {
+                document.body.innerHTML = "<h1>Mentiroso tontopolla</h1>";
+            }
+        }
+    </script>
+</head>
+<body style="text-align:center; margin-top:100px; font-family:sans-serif;">
+
+    <h1>¿Eres gay?</h1>
+
+    <button onclick="responder('si')" style="font-size:20px;">
+        Sí
+    </button>
+
+    <button onclick="responder('no')" style="font-size:20px;">
+        No
+    </button>
+
+</body>
+</html>
