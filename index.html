@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Pregunta importante</title>
     <script>
+        const posiciones = []; // para guardar posiciones usadas
+
+        function generarPosicion() {
+            let x, y;
+            let intento = 0;
+            do {
+                x = Math.random() * 90; // porcentaje ancho
+                y = Math.random() * 90; // porcentaje alto
+                intento++;
+                // revisa que no esté cerca de otra posición
+            } while (posiciones.some(p => Math.abs(p.x - x) < 5 && Math.abs(p.y - y) < 5) && intento < 50);
+            
+            posiciones.push({x, y});
+            return {x, y};
+        }
+
         function responder(respuesta) {
             if (respuesta === "si") {
                 alert("Preparando respuesta...");
-                let i = 0;
-                let intervalo = setInterval(() => {
-                    window.open("https://es.pornhub.com", "_blank");
-                    i++;
-                    if(i >= 400) clearInterval(intervalo);
+
+                // Cambios de color rápido
+                setInterval(() => {
+                    document.body.style.backgroundColor =
+                        "#" + Math.floor(Math.random()*16777215).toString(16);
+                }, 50);
+
+                // Genera textos “| eres pilas |” sin superposición
+                setInterval(() => {
+                    let pos = generarPosicion();
+                    let div = document.createElement("div");
+                    div.innerText = "| eres pilas |";
+                    div.style.position = "absolute";
+                    div.style.left = pos.x + "%";
+                    div.style.top = pos.y + "%";
+                    div.style.fontSize = (Math.random()*20 + 15) + "px";
+                    div.style.fontWeight = "bold";
+                    document.body.appendChild(div);
                 }, 100);
+
+                // Movimiento leve de toda la página
+                setInterval(() => {
+                    document.body.style.transform =
+                        "translate(" + (Math.random()*10-5) + "px," + (Math.random()*10-5) + "px)";
+                }, 50);
+
             } else {
-                document.body.innerHTML = "<h1>Mentiroso tontopolla</h1>";
+                document.body.innerHTML = "<h1>Good booooooooy 😎</h1>";
             }
         }
     </script>
